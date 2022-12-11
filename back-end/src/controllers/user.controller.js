@@ -11,6 +11,16 @@ const signIn = async (req, res) => {
   }
 };
 
+const signUp = async (req, res) => {
+    try {
+      const newUser = await loginService.signUp(req.body);  
+      return res.status(201).json(newUser);
+    } catch (error) {
+      return res.status(409).json({ message: error.message });
+    }
+};
+
 module.exports = {
     signIn,
+    signUp
 };
