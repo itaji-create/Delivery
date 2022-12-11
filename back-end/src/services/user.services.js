@@ -21,9 +21,21 @@ const token = async ({ email, password }) => {
   
     const secret = fs.readFileSync('jwt.evaluation.key').toString();
     return jwt.sign({ data: { email, password } }, secret, jwtConfig);
-  };
+};
+
+const signUp = async ({ name, role = 'customer', email, password }) => {
+    const userEmail = await User.findOne({ where: { email } });
+    if (userEmail) throw new Error('email already exists');
+  
+    const userName = await User.findOne({ where: { name } });
+    if (userName) throw new Error('name already exists');
+  
+    const newUser = await User.create({ name, role, email, password: md5(password) });
+    return newUser; 
+};
 
 module.exports = {
     signIn,
     token,
+    signUp
 }
