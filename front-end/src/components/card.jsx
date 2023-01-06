@@ -1,33 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Card(props) {
-  const {
-    price,
-    image,
-    name,
-    quantity,
-  } = props;
-
+// eslint-disable-next-line react/prop-types
+function Card({ product: { price, urlImage, name } }) {
   return (
     <div>
-      <h1>{price.replace('.', ',')}</h1>
       <img
-        src={ image }
+        src={ urlImage }
         alt="imagem"
       />
       <p>{name}</p>
+      <h1>{price.replace('.', ',')}</h1>
       <button type="button">-</button>
-      <input type="text" value={ quantity } />
+      <input type="text" value={ 0 } />
       <button type="button">+</button>
     </div>
   );
 }
 export default Card;
-
-Card.propTypes = {
-  price: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-  name: PropTypes.number.isRequired,
-  quantity: PropTypes.number.isRequired,
-};
