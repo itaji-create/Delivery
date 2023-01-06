@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import NavBar from '../components/navBar';
 
 function Checkout() {
   const [cart, setCart] = useState([]);
@@ -24,6 +25,7 @@ function Checkout() {
 
   return (
     <section>
+      <NavBar />
       <h2>Finalizar Pedido</h2>
       <table>
         <thead>

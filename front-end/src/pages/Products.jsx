@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../components/card';
+import NavBar from '../components/navBar';
 import { requestGet } from '../utils/requests';
 
 function Products() {
@@ -17,6 +18,7 @@ function Products() {
 
   return (
     <div>
+      <NavBar />
       <Link to="/customer/checkout">
         Ver Carrinho
       </Link>
