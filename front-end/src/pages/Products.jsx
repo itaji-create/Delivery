@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../components/card';
 import { requestGet } from '../utils/requests';
 
@@ -16,12 +17,12 @@ function Products() {
 
   return (
     <div>
-      {products && products.map((product) => {
-        product.quantity = 0;
-        return (
-          <Card key={ product.id } product={ product } />
-        );
-      })}
+      <Link to="/customer/checkout">
+        Ver Carrinho
+      </Link>
+      {products && products.map((product) => (
+        <Card key={ product.id } product={ product } />
+      ))}
     </div>
   );
 }
