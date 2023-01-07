@@ -28,6 +28,10 @@ module.exports = {
       sale_date: {
         type: Sequelize.DATE
       },
+      status: {
+        allowNull: false,
+        type: Sequelize.STRING
+      }
     });
   },
   async down(queryInterface, Sequelize) {
