@@ -56,7 +56,7 @@ const salesByUserId = async (userId) => {
 const createSaleOfProduct = async (products) => {
   for (let i = 0; i < products.length; i += 1) {
     const e = products[i];
-    const { saleId, id: productId, qtd: quantity } = e;
+    const { saleId, id: productId, quantity } = e;
     SaleProduct.create({ saleId, productId, quantity });
   }
 };
