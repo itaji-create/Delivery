@@ -32,11 +32,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    status: {
-      type: DataTypes.STRING,
-      defaultValue: 'Pendente',
-      allowNull: false,
-    },
+    // status: {
+    //   type: DataTypes.STRING,
+    //   defaultValue: 'Pendente',
+    //   allowNull: false,
+    // },
   },
   {
     createdAt: 'saleDate',
