@@ -12,12 +12,14 @@ const {
   salesByUserId,
 } = require('../controllers/sales.controller');
 
+const { tokenAuthenticador } = require('../middlewares/errors');
+
 router
   .get('/:id', getSaleById)
   .get('/', getSales)
-  .post('/', createSale)
+  .post('/', tokenAuthenticador, createSale)
   .get('/products/:id', getSalesOfProduct)
-  .post('/products', createSaleOfProduct)
+  .post('/products', tokenAuthenticador, createSaleOfProduct)
   .get('/products', getSalesProducts)
   .get('/', salesByUserId);
 
