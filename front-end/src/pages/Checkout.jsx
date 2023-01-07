@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Forms from '../components/formsCheckout';
 import NavBar from '../components/navBar';
 
 function Checkout() {
@@ -75,6 +76,7 @@ function Checkout() {
         }
 
       </h3>
+      <Forms total={ totalPrice } cart={ cart } />
     </section>
   );
 }
