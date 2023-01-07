@@ -2,24 +2,23 @@ const express = require('express');
 
 const router = express.Router();
 
-// const mid = require('./middlewares/errors');
 const {
   getSales,
   createSale,
-  createSaleProducts,
+  createSaleOfProduct,
   getSalesProducts,
-  getSaleProducts,
+  getSalesOfProduct,
   getSaleById,
-  salesUserbyId,
+  salesByUserId,
 } = require('../controllers/sales.controller');
 
 router
   .get('/:id', getSaleById)
   .get('/', getSales)
   .post('/', createSale)
-  .get('/products/:id', getSaleProducts)
-  .post('/products', createSaleProducts)
+  .get('/products/:id', getSalesOfProduct)
+  .post('/products', createSaleOfProduct)
   .get('/products', getSalesProducts)
-  .get('/', salesUserbyId);
+  .get('/', salesByUserId);
 
 module.exports = router;
