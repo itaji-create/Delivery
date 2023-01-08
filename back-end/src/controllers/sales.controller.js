@@ -55,8 +55,8 @@ const createSaleOfProduct = async (req, res) => {
 };
 
 const salesByUserId = async (req, res, _next) => {
-  const { userId } = req.params;
-  const ordersUser = await saleServices.salesUserbyId(userId);
+  const { id } = req.params;
+  const ordersUser = await saleServices.salesByUserId(id);
   return res.status(200).json(ordersUser);
 };
 
