@@ -17,37 +17,33 @@ function NavBar() {
 
   return (
     <nav>
-      <button
-        type="button"
-        data-testid="customer_products__element-navbar-link-products"
-        onClick={ () => navigate('/customer/products') }
-      >
-        Produtos
-      </button>
-      <button
-        type="button"
-        data-testid="customer_products__element-navbar-link-orders"
-        onClick={ () => navigate('/customer/orders') }
-      >
-        Meus pedidos
-      </button>
-      {user ? (
+      <div>
         <button
           type="button"
-          data-testid="customer_products__element-navbar-user-full-name"
+          data-testid="customer_products__element-navbar-link-products"
           onClick={ () => navigate('/customer/products') }
         >
-          { user.name }
+          Produtos
         </button>
-      ) : (
-        null
-      )}
-      <button
-        type="button"
-        onClick={ handleClick }
-      >
-        Sair
-      </button>
+        <button
+          type="button"
+          data-testid="customer_products__element-navbar-link-orders"
+          onClick={ () => navigate('/customer/orders') }
+        >
+          Meus pedidos
+        </button>
+      </div>
+      <div>
+        <span>
+          { user && user.name }
+        </span>
+        <button
+          type="button"
+          onClick={ handleClick }
+        >
+          Sair
+        </button>
+      </div>
     </nav>
   );
 }
