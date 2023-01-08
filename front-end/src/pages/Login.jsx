@@ -35,6 +35,16 @@ function Login() {
       user.token = token;
 
       localStorage.setItem('user', JSON.stringify(user));
+      console.log(user);
+      if (user.role === 'seller') {
+        window.location.href = '/seller/home';
+        return;
+      }
+
+      if (user.role === 'administrator') {
+        window.location.href = '/admin/home';
+        return;
+      }
 
       window.location.href = '/customer/products';
     } catch (error) {
