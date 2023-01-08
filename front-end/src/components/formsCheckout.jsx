@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { createSale } from '../utils/requests';
+import { createSale, requestGet } from '../utils/requests';
 
 function Forms(props) {
   const { total, cart } = props;
   const navigate = useNavigate();
   const [adress, setAdress] = useState('');
   const [number, setNumber] = useState('');
+  const [sellers, setSellers] = useState(false);
+
+  useEffect(() => {
+    requestGet('/user/sellers').then((data) => setSellers(data));
+  }, []);
 
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -42,9 +47,9 @@ function Forms(props) {
             id="vendedor"
             onClick={ (e) => console.log(e.target.value) }
           >
-            <option value="1">victor</option>
-            <option value="2">joão</option>
-            <option value="3">itaji</option>
+            {sellers && sellers.map((seller) => (
+              <option key={ seller.id } value={ seller.id }>{ seller.name }</option>
+            ))}
           </select>
         </label>
         <label htmlFor="endereço">
