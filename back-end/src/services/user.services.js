@@ -3,6 +3,11 @@ const md5 = require('md5');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
+const getSellers = async () => {
+  const sellers = await User.findAll({ where: { role: 'seller' } });
+  return sellers;
+};
+
 const signIn = async ({ email, password }) => {
     const user = await User.findOne({
       where: { email, password: md5(password) },
@@ -35,7 +40,8 @@ const signUp = async ({ name, role = 'customer', email, password }) => {
 };
 
 module.exports = {
-    signIn,
-    token,
-    signUp
+  getSellers,
+  signIn,
+  token,
+  signUp,
 }

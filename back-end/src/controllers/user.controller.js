@@ -20,7 +20,17 @@ const signUp = async (req, res) => {
     }
 };
 
+const getSellers = async (req, res) => {
+  try {
+    const sellers = await loginService.getSellers();
+    return res.status(200).json(sellers);
+  } catch (error) {
+    return res.status(409).json({ message: error.message })
+  }
+}
+
 module.exports = {
     signIn,
-    signUp
+    signUp,
+    getSellers
 };
