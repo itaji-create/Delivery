@@ -21,6 +21,6 @@ router
   .get('/products/:id', getSalesOfProduct)
   .post('/products', tokenAuthenticador, createSaleOfProduct)
   .get('/products', getSalesProducts)
-  .get('/', salesByUserId);
+  .get('/userId/:id', salesByUserId);
 
 module.exports = router;
