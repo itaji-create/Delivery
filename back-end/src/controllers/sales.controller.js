@@ -60,6 +60,12 @@ const salesByUserId = async (req, res, _next) => {
   return res.status(200).json(ordersUser);
 };
 
+const getSalesBySellerId = async (req, res, _next) => {
+  const { id } = req.params;
+  const orders = await saleServices.getSalesBySellerId(id);
+  return res.status(200).json(orders);
+};
+
 module.exports = {
   getSales,
   getSaleById,
@@ -68,4 +74,5 @@ module.exports = {
   getSalesProducts,
   getSalesOfProduct,
   salesByUserId,
+  getSalesBySellerId,
 };

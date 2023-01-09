@@ -3,11 +3,11 @@ import moment from 'moment';
 import 'moment/locale/pt-br';
 import { useNavigate } from 'react-router-dom';
 
-function Order({ order: { id, status, saleDate, totalPrice } }) {
+function Order({ order: { id, status, saleDate, totalPrice }, role }) {
   const navigate = useNavigate();
 
   const handleOrders = () => {
-    navigate(`/customer/orders/${id}`);
+    navigate(`/${role}/orders/${id}`);
   };
 
   return (
