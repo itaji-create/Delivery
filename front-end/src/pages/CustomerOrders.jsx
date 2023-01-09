@@ -6,8 +6,8 @@ import { requestGet } from '../utils/requests';
 function CustomerOrders() {
   const [orders, setOrders] = useState([]);
 
+  const user = JSON.parse(localStorage.getItem('user'));
   const fetchOrders = async () => {
-    const user = JSON.parse(localStorage.getItem('user'));
     try {
       const data = await requestGet(`/sales/userId/${user.id}`);
       setOrders(data);
@@ -30,7 +30,9 @@ function CustomerOrders() {
       </header>
       <main>
         { orders
-          ? orders.map((sale) => <Order key={ sale.id } order={ sale } />)
+          ? orders.map((sale) => (
+            <Order key={ sale.id } role={ user.role } order={ sale } />
+          ))
           : <h1> Você ainda não possui pedido</h1> }
       </main>
     </section>
