@@ -37,7 +37,7 @@ function Login() {
       localStorage.setItem('user', JSON.stringify(user));
       console.log(user);
       if (user.role === 'seller') {
-        window.location.href = '/seller/home';
+        window.location.href = '/seller/orders';
         return;
       }
 
