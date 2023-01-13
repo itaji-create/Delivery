@@ -45,7 +45,7 @@ function Forms(props) {
           <select
             name="vendedor"
             id="vendedor"
-            onClick={ (e) => console.log(e.target.value) }
+            defaultValue={ 1 }
           >
             {sellers && sellers.map((seller) => (
               <option key={ seller.id } value={ seller.id }>{ seller.name }</option>
