@@ -71,58 +71,43 @@
 
 </details>
 
-<details>
-  <summary>
-    <strong>👷 Estruturação do projeto</strong>
-  </summary><br>
+<summary>
+  <strong>👷 Estruturação do projeto</strong>
+</summary><br>
 
-  - **Fluxo Comum**: 
-    - Tela de Login; 
+**Responsabilidade de cada fluxo:
+
+  - **Fluxo Comum**:
+    - **Fazer login** e **registrar novo usuário** no sistema.
+    - Tela de Login;
+        * Na página de login ocorrerá erro caso:
+            1. Seja digitado um email inexistente no database.
+            2. A senha esteja incorreta.
     - Tela de Registro;
+        * Na página de cadastro ocorrerá erro caso:
+            1. Nome completo com número de caracteres menor que `12`.
+            2. Email incompleto, fora de um padrão comum: `<email>@<domínioPrincipal>.<domínioGenérico>`;
+            3. Senha com número de caracteres menor que `7`.
 
   - **Fluxo do Cliente**:
-    - Tela de Produtos; 
-    - Tela de Checkout; 
-    - Tela de Pedidos; 
+     **Gerar uma nova venda**, **Consultar pedidos feitos anteriormente** e **Acessar detalhes de cada pedido**.
+    - Tela de Produtos;
+        - **Adicionar e remover produtos no carrinho**;
+    - Tela de Checkout;
+        - **Alterar dados do pedido, como a quantidade de produtos, o vendedor responsável e endereço de entrega**;
+    - Tela de Pedidos;
+        - **Adicionar e remover produtos do carrinho**;
     - Tela de Detalhes do Pedido;
+        - **Acessar detalhes do pedido e mudar para "Entregue" o status desse pedido, caso o vendedor tenha classificado anteriormente o pedido como "Em Trânsito"**
 
-  - **Fluxo do Vendedora**: 
-    - Tela de Pedidos; 
+  - **Fluxo do Vendedor**:
+     
+    - Tela de Pedidos;
+        - **Listar pedidos relacionados a seus respectivos vendedores**
     - Tela de Detalhes do Pedido;
+        - **Acessar detalhes de cada pedido e mudar de "Pendente" para "Preparando" e "Em Trânsito", o status desses pedidos**
 
   - **Fluxo do Administrador**: 
     - Tela de gerenciamento de usuários;
-</details>
-
-# Requisitos
-
-## `Fluxo Comum`
-
-- Responsável por **fazer login** e **registrar** no sistema.
-
-- A senha recebe qualquer tipo de caractere;
-- Os critérios para considerar os dados mal formatados são:
-  - Nome completo com número de caracteres menor que `12`.
-  - Email incompleto, fora de um padrão comum: `<email>@<domínioPrincipal>.<domínioGenérico>`;
-  - Senha com número de caracteres menor que `7`.
-
-
-## `Fluxo do Cliente`
-
-- Responsável por **Adicionar e remover produtos do carrinho**, **Gerar uma nova venda**, **Consultar pedidos feitos anteriormente** e **Acessar detalhes de cada pedido**.
-
-**Os status de um pedido podem ser:**
-      - `Pendente`;
-      - `Preparando`;
-      - `Em Trânsito`;
-      - `Entregue`.
-
-## `Fluxo da Pessoa Vendedora`
-
-- Responsável por **Listar pedidos relacionados a seus respectivos vendedores, acessar detalhes de cada pedido e mudar de "Pendente" para "Preparando" e "Em Trânsito", o status desses pedidos**
-
-## `Fluxo da Pessoa Administradora`
-
-- Responsável por **Realizar o cadastro de clientes e vendedores, também possibilita sua remoção**
-
----
+      - **Realizar o cadastro de clientes e vendedores, também possibilita sua remoção**
+    
