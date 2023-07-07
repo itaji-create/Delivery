@@ -10,6 +10,7 @@ import SaleDetails from './pages/SaleDetails';
 import SellerOrderDetails from './pages/SellerOrderDetails';
 import SellerOrders from './pages/SellerOrders';
 
+
 function App() {
   return (
     <BrowserRouter>
