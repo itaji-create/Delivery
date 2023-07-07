@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-// import moment from 'moment';
-// import 'moment/locale/pt-br';
+import moment from 'moment';
+import 'moment/locale/pt-br';
 import { useNavigate } from 'react-router-dom';
 
 function Order({ order: { id, status, saleDate, totalPrice }, role }) {
@@ -19,8 +19,8 @@ function Order({ order: { id, status, saleDate, totalPrice }, role }) {
         { status }
       </p>
       <p>
-        {/* { moment(saleDate).locale('pt-br').format('L') } */}
-        { saleDate }
+        { moment(saleDate).locale('pt-br').format('L') }
+        {/* { saleDate } */}
       </p>
       <p>
         <i>R$</i>
