@@ -29,7 +29,7 @@ function CustomerOrders() {
         <NavBar />
       </header>
       <main>
-        { orders
+        { orders.length > 0
           ? orders.map((sale) => (
             <Order key={ sale.id } role={ user.role } order={ sale } />
           ))

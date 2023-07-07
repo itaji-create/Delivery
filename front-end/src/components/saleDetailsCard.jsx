@@ -1,5 +1,5 @@
-import moment from 'moment';
-import 'moment/locale/pt-br';
+// import moment from 'moment';
+// import 'moment/locale/pt-br';
 
 function Card(params) {
   const { order, products } = params;
@@ -18,7 +18,8 @@ function Card(params) {
                 { order.seller.name }
               </th>
               <th>
-                { moment(order.saleDate).format('DD/MM/YYYY')}
+                {/* { moment(order.saleDate).format('DD/MM/YYYY')} */}
+                { order.saleDate }
               </th>
               <th>
                 { order.status }
