@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 import { requestPost, setToken } from '../utils/requests';
 
 function Login() {
@@ -53,48 +54,54 @@ function Login() {
   };
 
   return (
-    <section>
-      <h1>Delivery App</h1>
-      <label htmlFor="login">
-        Login
-        <input
-          id="login"
-          type="text"
-          placeholder="Email..."
-          name="email"
-          onChange={ handleChange }
-        />
-      </label>
-      <label htmlFor="password">
-        Senha
-        <input
-          id="password"
-          type="password"
-          placeholder="Senha"
-          name="password"
-          onChange={ handleChange }
-        />
-      </label>
-      { loginFailed ? (
-        <p>
-          email ou senha incorretos, tente novamente
-        </p>
-      ) : null }
-      <button
-        type="submit"
-        disabled={ isDisable }
-        onClick={ (event) => handleClick(event) }
-      >
-        LOGIN
-      </button>
-      <Link to="/register">
-        <button
-          type="submit"
-        >
-          REGISTER
-        </button>
-      </Link>
-    </section>
+    <Container>
+      <main className="form-signin w-100 m-auto">
+        <form>
+          <h1 className="h3 mb-3 fw-normal">Delivery App</h1>
+          <div className="form-floating">
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              id="floatingInput"
+              onChange={ handleChange }
+            />
+            <label htmlFor="floatingInput">Endereço de E-mail</label>
+          </div>
+          <div className="form-floating">
+            <input
+              type="password"
+              name="password"
+              className="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+              onChange={ handleChange }
+            />
+            <label htmlFor="floatingPassword">Password</label>
+          </div>
+          <div className="form-check text-start my-3">
+            { loginFailed ? (
+              <p>
+                email ou senha incorretos, tente novamente
+              </p>
+            ) : null }
+            <button
+              type="submit"
+              className="btn btn-primary w-100 py-2"
+              disabled={ isDisable }
+              onClick={ (event) => handleClick(event) }
+            >
+              LOGIN
+            </button>
+            <p>Ainda não possui uma conta?</p>
+            <Link to="/register">
+              <button className="btn w-100 py-2" type="button">Clique aqui</button>
+            </Link>
+            <p className="mt-5 mb-3 text-body-secondary">© 2022–2023</p>
+          </div>
+        </form>
+      </main>
+    </Container>
   );
 }
 
