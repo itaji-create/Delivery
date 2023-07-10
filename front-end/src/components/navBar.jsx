@@ -36,6 +36,15 @@ function NavBar() {
               Meus pedidos
             </a>
           </li>
+          <li className="nav-item">
+            <a
+              href="/customer/checkout"
+              className="nav-link"
+              aria-current="page"
+            >
+              Ver Carrinho
+            </a>
+          </li>
           <li>
             <span>
               { user && user.name }

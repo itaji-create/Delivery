@@ -19,9 +19,6 @@ function Products() {
   return (
     <div>
       <NavBar />
-      <Link to="/customer/checkout">
-        Ver Carrinho
-      </Link>
       <h2 className="text-center mb-4">Produtos</h2>
       <div className="container mt-5">
         <div className="row">
