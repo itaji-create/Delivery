@@ -32,7 +32,6 @@ function Register() {
       setPassword(e.target.value);
     }
     if (inputName === 'name') {
-      console.log(inputName);
       setName(e.target.value);
     }
   };
@@ -53,59 +52,76 @@ function Register() {
 
   return (
 
-    <div>
-      <header>
-        <h2>Cadastro</h2>
-      </header>
-      <div>
-        <form>
-          <label htmlFor="nome">
-            Nome
-            <input
-              type="text"
-              className="input-name"
-              placeholder="Seu nome"
-              onChange={ handleChange }
-              name="name"
-            />
-          </label>
-
-          <label htmlFor="email">
-            Email
-            <input
-              type="text"
-              className="input-email"
-              placeholder="Digite seu email"
-              onChange={ handleChange }
-              name="email"
-            />
-          </label>
-
-          <label htmlFor="senha">
-            Senha
-            <input
-              type="password"
-              className="input-password"
-              placeholder="Digite sua senha"
-              onChange={ handleChange }
-              name="password"
-            />
-          </label>
-
-          { invalidProperties ? (
-            <p>
-              revise dados e tente novamente
-            </p>
-          ) : null }
-
-          <button
-            type="button"
-            disabled={ isDisable }
-            onClick={ handleClick }
-          >
-            Cadastrar
-          </button>
-        </form>
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <h2 className="text-center mb-4">Cadastro de Usuário</h2>
+          <form>
+            <div className="form-group">
+              <label htmlFor="nome">
+                Nome:
+                <input
+                  type="text"
+                  className="form-control"
+                  id="nome"
+                  placeholder="Digite seu nome"
+                  onChange={ handleChange }
+                  name="name"
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">
+                Email:
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  placeholder="Digite seu email"
+                  onChange={ handleChange }
+                  name="email"
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              <label htmlFor="senha">
+                Senha:
+                <input
+                  type="password"
+                  className="form-control"
+                  id="senha"
+                  placeholder="Digite sua senha"
+                  onChange={ handleChange }
+                  name="password"
+                />
+              </label>
+            </div>
+            {/* <div className="form-group">
+              <label htmlFor="confirmarSenha">
+                Confirmar Senha:
+                <input
+                  type="password"
+                  className="form-control"
+                  id="confirmarSenha"
+                  placeholder="Confirme sua senha"
+                />
+              </label>
+            </div> */}
+            { invalidProperties ? (
+              <p>
+                revise dados e tente novamente
+              </p>
+            ) : null }
+            <button
+              type="button"
+              className="btn btn-primary btn-block"
+              disabled={ isDisable }
+              onClick={ handleClick }
+            >
+              Cadastrar
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

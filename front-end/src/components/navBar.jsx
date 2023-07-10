@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Button, Container } from 'react-bootstrap';
 
 const handleClick = () => {
   localStorage.removeItem('user');
@@ -8,7 +8,6 @@ const handleClick = () => {
 };
 
 function NavBar() {
-  const navigate = useNavigate();
   const [user, setUser] = useState();
 
   useEffect(() => {
@@ -16,35 +15,41 @@ function NavBar() {
   }, [setUser]);
 
   return (
-    <nav>
-      <div>
-        <button
-          type="button"
-          data-testid="customer_products__element-navbar-link-products"
-          onClick={ () => navigate('/customer/products') }
-        >
-          Produtos
-        </button>
-        <button
-          type="button"
-          data-testid="customer_products__element-navbar-link-orders"
-          onClick={ () => navigate('/customer/orders') }
-        >
-          Meus pedidos
-        </button>
-      </div>
-      <div>
-        <span>
-          { user && user.name }
-        </span>
-        <button
-          type="button"
-          onClick={ handleClick }
-        >
-          Sair
-        </button>
-      </div>
-    </nav>
+    <Container>
+      <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <ul className="nav nav-pills">
+          <li className="nav-item">
+            <a
+              href="/customer/products"
+              className="nav-link active"
+              aria-current="page"
+            >
+              Produtos
+            </a>
+          </li>
+          <li className="nav-item">
+            <a
+              href="/customer/orders"
+              className="nav-link"
+              aria-current="page"
+            >
+              Meus pedidos
+            </a>
+          </li>
+          <li>
+            <span>
+              { user && user.name }
+            </span>
+            <Button
+              type="button"
+              onClick={ handleClick }
+            >
+              Sair
+            </Button>
+          </li>
+        </ul>
+      </header>
+    </Container>
   );
 }
 export default NavBar;
