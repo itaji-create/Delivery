@@ -22,9 +22,14 @@ function Products() {
       <Link to="/customer/checkout">
         Ver Carrinho
       </Link>
-      {products && products.map((product) => (
-        <Card key={ product.id } product={ product } />
-      ))}
+      <h2 className="text-center mb-4">Produtos</h2>
+      <div className="container mt-5">
+        <div className="row">
+          {products && products.map((product) => (
+            <Card key={ product.id } product={ product } />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

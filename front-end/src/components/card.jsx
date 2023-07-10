@@ -49,16 +49,42 @@ function Card({ product: { id, price, urlImage, name } }) {
   };
 
   return (
-    <div>
-      <img
-        src={ urlImage }
-        alt="imagem retratando o produto"
-      />
-      <p>{name}</p>
-      <h1>{price.replace('.', ',')}</h1>
-      <button type="button" onClick={ removeProduct }>-</button>
-      <input value={ quantity } />
-      <button type="button" onClick={ addProduct }>+</button>
+    <div className="col-md-4 mb-4">
+      <div className="card">
+        <img src={ urlImage } className="card-img" alt="Imagem do Produto" />
+        <div className="card-body">
+          <h5 className="card-title">{name}</h5>
+          <p className="card-text">{price.replace('.', ',')}</p>
+          <div className="row">
+            <div className="col-md-4">
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={ removeProduct }
+              >
+                -
+              </button>
+            </div>
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control text-center"
+                id="unitInput"
+                value={ quantity }
+              />
+            </div>
+            <div className="col-md-4">
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={ addProduct }
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

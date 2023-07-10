@@ -52,3 +52,7 @@
     transform: rotate(-10deg);
   }
 }
+
+.card-img {
+  max-height: 250px; /* Defina a altura desejada */
+}
