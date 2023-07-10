@@ -27,24 +27,26 @@ function Checkout() {
   return (
     <section>
       <NavBar />
-      <h2>Finalizar Pedido</h2>
-      <table>
+      <div className="col-md-7 col-lg-8">
+        <h2>Finalizar Pedido</h2>
+      </div>
+      <table className="table">
         <thead>
           <tr>
-            <th>Item</th>
-            <th>Descrição</th>
-            <th>Quantidadade</th>
-            <th>Valor Unitário</th>
-            <th>Sub-total</th>
-            <th>Remover Item</th>
+            <th scope="col">Item</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Valor Unitário</th>
+            <th scope="col">Sub-total</th>
+            <th scope="col">Remover Item</th>
           </tr>
         </thead>
         <tbody>
           {cart.map((product, index) => (
             <tr key={ product.id } id={ product.id }>
-              <td>
+              <th scope="row">
                 {index + 1}
-              </td>
+              </th>
               <td>
                 {product.name}
               </td>
@@ -62,6 +64,7 @@ function Checkout() {
                   type="button"
                   onClick={ handleRemoveButton }
                   id={ index }
+                  className="btn btn-danger"
                 >
                   Remover
                 </button>

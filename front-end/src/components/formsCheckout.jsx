@@ -39,40 +39,67 @@ function Forms(props) {
   };
   return (
     <div>
-      <div>
-        <label htmlFor="vendedor">
-          P.Vendedora Responsável
-          <select
-            name="vendedor"
-            id="vendedor"
-            defaultValue={ 1 }
-          >
-            {sellers && sellers.map((seller) => (
-              <option key={ seller.id } value={ seller.id }>{ seller.name }</option>
-            ))}
-          </select>
-        </label>
-        <label htmlFor="endereço">
-          Endereço
-          <input
-            type="text"
-            onChange={ (e) => setAdress(e.target.value) }
-          />
-        </label>
-        <label htmlFor="endereço">
-          Número
-          <input
-            type="text"
-            onChange={ (e) => setNumber(e.target.value) }
-          />
-        </label>
-        <button
-          type="submit"
-          onClick={ handleSubmit }
-        >
-          Finalizar pedido
-        </button>
-      </div>
+      <form className="needs-validation was-validated" noValidate>
+        <div className="row g-3">
+          <div className="col-sm-6">
+            <label htmlFor="address" className="form-label">
+              Address
+              <input
+                type="text"
+                className="form-control"
+                id="address"
+                placeholder
+                required
+                onChange={ (e) => setAdress(e.target.value) }
+              />
+              <div className="invalid-feedback">
+                Valid address is required.
+              </div>
+            </label>
+          </div>
+          <div className="col-sm-6">
+            <label htmlFor="number-address" className="form-label">
+              Number
+              <input
+                type="number"
+                className="form-control"
+                id="number-address"
+                placeholder
+                required
+                onChange={ (e) => setNumber(e.target.value) }
+              />
+              <div className="invalid-feedback">
+                Valid number is required.
+              </div>
+            </label>
+          </div>
+          <div className="col-md-5">
+            <label htmlFor="vendedor" className="form-label">
+              Responsible seller:
+              <select
+                className="form-select"
+                required
+                name="vendedor"
+                id="vendedor"
+                defaultValue={ 1 }
+              >
+              {sellers && sellers.map((seller) => (
+                <option key={ seller.id } value={ seller.id }>{ seller.name }</option>
+              ))}
+              </select>
+            </label>
+          </div>
+          <div>
+            <button
+              type="button"
+              onClick={ handleSubmit }
+              className="w-100 btn btn-primary btn-lg"
+            >
+              Finalizar pedido
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }
