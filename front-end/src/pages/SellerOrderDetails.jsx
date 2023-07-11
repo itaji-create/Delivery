@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { requestGet } from '../utils/requests';
-import Card from '../components/saleDetailsCard';
+import Card from '../components/customerOrderDetails';
 
 function SellerOrderDetails() {
   const [order, setOrder] = useState();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../components/navBar';
 import { requestGet } from '../utils/requests';
-import Card from '../components/saleDetailsCard';
+import Card from '../components/customerOrderDetails';
 
 function SaleDetails() {
   const [order, setOrder] = useState();

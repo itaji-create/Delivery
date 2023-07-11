@@ -63,7 +63,7 @@ function Card(params) {
             ))}
           </tbody>
           <p>
-            Total R$:
+            Totallllll R$:
             <i>{ order.totalPrice.replace(/\./, ',') }</i>
           </p>
         </table>

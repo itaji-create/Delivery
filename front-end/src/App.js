@@ -6,7 +6,7 @@ import CustomerOrders from './pages/CustomerOrders';
 import Login from './pages/Login';
 import Products from './pages/Products';
 import Register from './pages/Register';
-import SaleDetails from './pages/SaleDetails';
+import CustomerOrderDetails from './pages/CustomerOrderDetails';
 import SellerOrderDetails from './pages/SellerOrderDetails';
 import SellerOrders from './pages/SellerOrders';
 
@@ -20,7 +20,7 @@ function App() {
         <Route path="/register" element={ <Register /> } />
         <Route path="/customer/products" element={ <Products /> } />
         <Route path="/customer/checkout" element={ <Checkout /> } />
-        <Route path="/customer/orders/:id" element={ <SaleDetails /> } />
+        <Route path="/customer/orders/:id" element={ <CustomerOrderDetails /> } />
         <Route path="/customer/orders" element={ <CustomerOrders /> } />
         <Route path="/seller/orders/:id" element={ <SellerOrderDetails /> } />
         <Route path="/seller/orders" element={ <SellerOrders /> } />

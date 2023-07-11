@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Card from '../components/card';
+import Card from '../components/productsCard';
 import NavBar from '../components/navBar';
 import { requestGet } from '../utils/requests';
 
