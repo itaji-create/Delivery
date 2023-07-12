@@ -11,6 +11,7 @@ const {
   getSaleById,
   salesByUserId,
   getSalesBySellerId,
+  updateSaleStatus,
 } = require('../controllers/sales.controller');
 
 const { tokenAuthenticador } = require('../middlewares/errors');
@@ -23,6 +24,7 @@ router
   .post('/products', tokenAuthenticador, createSaleOfProduct)
   .get('/products', getSalesProducts)
   .get('/userId/:id', salesByUserId)
-  .get('/seller/:id', getSalesBySellerId);
+  .get('/seller/:id', getSalesBySellerId)
+  .put('/:id', updateSaleStatus);
 
 module.exports = router;
