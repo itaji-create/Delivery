@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../components/navBar';
-import { requestGet } from '../utils/requests';
+import { requestGet, updateSale } from '../utils/requests';
 import Card from '../components/customerOrderDetails';
 
 function SaleDetails() {
@@ -13,10 +13,19 @@ function SaleDetails() {
     requestGet(`sales/products/${id}`).then((data) => setProducts(data));
   }, []);
 
+  const handleClick = async (id) => {
+    await updateSale(`/sales/${id}`, { status: 'Entregue' });
+    window.location.href = `/customer/orders/${id}`;
+  };
+
   return (
     <section>
       <NavBar />
-      <Card products={ products } order={ order } />
+      <Card
+        products={ products }
+        order={ order }
+        handleClick={ () => handleClick(order.id) }
+      />
     </section>
   );
 }

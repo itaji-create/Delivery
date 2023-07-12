@@ -2,7 +2,8 @@ import moment from 'moment';
 import 'moment/locale/pt-br';
 
 function Card(params) {
-  const { order, products } = params;
+  const { order, products, handleClick } = params;
+
   return (
     <div>
       <h3>Order Details</h3>
@@ -14,7 +15,12 @@ function Card(params) {
             <p className="navbar-brand">{ order.seller.name }</p>
             <p className="navbar-brand">{ moment(order.saleDate).format('MM/DD/YYYY')}</p>
             <p className="navbar-brand">{ order.status }</p>
-            <button type="button" className="btn btn-success rounded-pill px-3">
+            <button
+              type="button"
+              className="btn btn-success rounded-pill px-3"
+              disabled={ order.status === 'Entregue' }
+              onClick={ handleClick }
+            >
               Mark as delivered
             </button>
           </nav>
