@@ -14,6 +14,8 @@ function SaleDetails() {
     requestGet(`sales/products/${id}`).then((data) => setProducts(data));
   }, []);
 
+  console.log(order);
+
   return (
     <section>
       <NavBar />
@@ -21,6 +23,8 @@ function SaleDetails() {
         products={ products }
         order={ order }
         handleClick={ () => handleClick(order.id, 'Entregue') }
+        buttonName="Mark as delivered"
+        disabled={ order && order.status === 'Pendente' }
       />
     </section>
   );

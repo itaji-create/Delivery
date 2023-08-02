@@ -2,7 +2,7 @@ import moment from 'moment';
 import 'moment/locale/pt-br';
 
 function Card(params) {
-  const { order, products, handleClick } = params;
+  const { order, products, handleClick, buttonName, disabled } = params;
 
   return (
     <div>
@@ -18,10 +18,10 @@ function Card(params) {
             <button
               type="button"
               className="btn btn-success rounded-pill px-3"
-              disabled={ order.status === 'Entregue' }
+              disabled={ disabled }
               onClick={ handleClick }
             >
-              Mark as delivered
+              { buttonName }
             </button>
           </nav>
           <table className="table">

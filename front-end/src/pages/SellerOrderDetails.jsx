@@ -13,22 +13,27 @@ function SellerOrderDetails() {
     requestGet(`sales/products/${id}`).then((data) => setProducts(data));
   }, []);
 
+  const switchButton = (status) => {
+    if (status === 'Pendente') {
+      handleClick(order.id, 'In Preparation');
+    }
+    if (status === 'In Preparation') {
+      handleClick(order.id, 'In Transit');
+    }
+  };
+
   return (
-    <section>
-      <Card products={ products } order={ order } />
-      <button
-        onClick={ () => handleClick(order.id, 'In Preparation') }
-        type="button"
-      >
-        PREPARAR PEDIDO
-      </button>
-      <button
-        onClick={ () => handleClick(order.id, 'In Transit') }
-        type="button"
-      >
-        SAIU PARA ENTREGA
-      </button>
-    </section>
+    <Card
+      products={ products }
+      order={ order }
+      handleClick={ () => switchButton(order.status) }
+      buttonName={
+        order && (
+          order.status === 'Pendente' ? 'Mark as In Preparation' : 'Mark as In Transit'
+        )
+      }
+      disabled={ order && order.status === 'In Transit' }
+    />
   );
 }
 
