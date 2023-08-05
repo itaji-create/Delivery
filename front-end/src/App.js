@@ -9,6 +9,7 @@ import Register from './pages/Register';
 import CustomerOrderDetails from './pages/CustomerOrderDetails';
 import SellerOrderDetails from './pages/SellerOrderDetails';
 import SellerOrders from './pages/SellerOrders';
+import Admin from './pages/Admin';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/customer/orders" element={ <CustomerOrders /> } />
         <Route path="/seller/orders/:id" element={ <SellerOrderDetails /> } />
         <Route path="/seller/orders" element={ <SellerOrders /> } />
+        <Route path="/admin/home" element={ <Admin /> } />
       </Routes>
     </BrowserRouter>
   );
