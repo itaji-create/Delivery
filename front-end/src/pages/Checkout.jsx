@@ -26,7 +26,7 @@ function Checkout() {
 
   return (
     <section>
-      <NavBar />
+      <NavBar products="Products" orders="My orders" />
       <div className="col-md-7 col-lg-8">
         <h2>Finalizar Pedido</h2>
       </div>

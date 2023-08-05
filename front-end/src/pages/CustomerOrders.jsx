@@ -26,7 +26,7 @@ function CustomerOrders() {
   return (
     <section>
       <header>
-        <NavBar />
+        <NavBar products="Products" cart="Shopping cart" />
       </header>
       <div className="container mt-5">
         <h2 className="text-center mb-4">Pedidos de Produtos</h2>

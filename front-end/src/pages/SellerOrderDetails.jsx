@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { requestGet } from '../utils/requests';
 import Card from '../components/customerOrderDetails';
 import handleClick from '../utils/changeStatus';
+import NavBar from '../components/navBar';
 
 function SellerOrderDetails() {
   const [order, setOrder] = useState();
@@ -23,17 +24,18 @@ function SellerOrderDetails() {
   };
 
   return (
-    <Card
-      products={ products }
-      order={ order }
-      handleClick={ () => switchButton(order.status) }
-      buttonName={
-        order && (
+    <div>
+      <NavBar titlePage="Order Details" sellersOrders="My orders" />
+      <Card
+        products={ products }
+        order={ order }
+        handleClick={ () => switchButton(order.status) }
+        buttonName={ order && (
           order.status === 'Pendente' ? 'Mark as In Preparation' : 'Mark as In Transit'
-        )
-      }
-      disabled={ order && order.status === 'In Transit' }
-    />
+        )}
+        disabled={ order && order.status === 'In Transit' }
+      />
+    </div>
   );
 }
 

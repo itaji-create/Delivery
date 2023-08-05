@@ -6,7 +6,6 @@ function Card(params) {
 
   return (
     <div>
-      <h3>Order Details</h3>
       {order ? (
         <div>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import NavBar from '../components/navBar';
 import Order from '../components/orderCard';
 import { requestGet } from '../utils/requests';
 
@@ -20,35 +21,13 @@ function SellerOrders() {
     }
   };
 
-  const handleClick = () => {
-    localStorage.removeItem('user');
-    window.location.href = '/login';
-  };
-
   useEffect(() => {
     fetchOrders();
   }, []);
 
   return (
     <div>
-      <header>
-        <nav>
-          <div>
-            <button type="button">Pedidos</button>
-          </div>
-          <div>
-            <span>
-              { user && user.name }
-            </span>
-            <button
-              type="button"
-              onClick={ handleClick }
-            >
-              Sair
-            </button>
-          </div>
-        </nav>
-      </header>
+      <NavBar titlePage="Sales" />
       {orders && orders.map((order) => (
         <Order key={ order.id } role={ user.role } order={ order } />
       ))}
