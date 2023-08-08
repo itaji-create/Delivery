@@ -35,6 +35,16 @@ function SellerOrderDetails() {
         )}
         disabled={ order && order.status === 'In Transit' }
       />
+      {order && (
+        <div className="d-inline-block">
+          <h3 className="text-primary">
+            Adress:
+          </h3>
+          <p className="text-secondary">
+            {`${order.deliveryAddress}, ${order.deliveryNumber}`}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

@@ -16,7 +16,7 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders }) {
   }, [setUser]);
 
   return (
-    <nav className="navbar fixed-top bg-primary">
+    <nav className="navbar bg-primary">
       <div>
         <ul className="nav nav-pills">
           <li className="nav-item">
