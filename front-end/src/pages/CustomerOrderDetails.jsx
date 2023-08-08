@@ -18,7 +18,7 @@ function SaleDetails() {
 
   return (
     <section>
-      <NavBar />
+      <NavBar products="Products" orders="My orders" />
       <Card
         products={ products }
         order={ order }
