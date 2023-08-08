@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-// import MyContext from '../context/Context';
-import { requestPost } from '../utils/requests';
+import { requestPost, setToken } from '../utils/requests';
 
 function Register() {
-  //   const { setUser, name, setName } = useContext(MyContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,9 +36,15 @@ function Register() {
 
   const handleClick = async () => {
     try {
-      const register = await requestPost('/user/signUp', { name, email, password });
-      //   setUser(register);
-      localStorage.setItem('user', JSON.stringify(register));
+      const {
+        newUser,
+        token,
+      } = await requestPost('/user/signUp', { name, email, password });
+
+      setToken(token);
+      newUser.token = token;
+
+      localStorage.setItem('user', JSON.stringify(newUser));
       setInvalidProperties(false);
 
       window.location.href = '/customer/products';
