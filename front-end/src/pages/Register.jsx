@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React, { useState } from 'react';
 import { requestPost, setToken } from '../utils/requests';
 
@@ -39,7 +40,7 @@ function Register() {
       const {
         newUser,
         token,
-      } = await requestPost('/user/signUp', { name, email, password });
+      } = await requestPost('/user/signUp', { name, email, password, role });
 
       setToken(token);
       newUser.token = token;
