@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { requestPost } from '../utils/requests';
 import NavBar from '../components/navBar';
+import UsersTable from '../components/usersTable';
 
 function Admin() {
   const [name, setName] = useState('');
@@ -121,6 +122,7 @@ function Admin() {
           Cadastrar
         </button>
       </form>
+      <UsersTable />
     </div>
   );
 }
