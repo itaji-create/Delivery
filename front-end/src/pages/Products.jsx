@@ -18,7 +18,6 @@ function Products() {
   return (
     <div>
       <NavBar cart="Shopping Cart" orders="My orders" />
-      <h2 className="text-center mb-4">Produtos</h2>
       <div className="container mt-5">
         <div className="row">
           {products && products.map((product) => (
