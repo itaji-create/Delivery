@@ -48,10 +48,18 @@ const signUp = async ({ name, role = 'customer', email, password }) => {
     return newUser; 
 };
 
+const deleteUser = async ({ email }) => {
+  const destroyed = await User.destroy({
+    where: { email }
+  });
+  return destroyed;
+}
+
 module.exports = {
   getSellers,
   signIn,
   token,
   signUp,
+  deleteUser,
   getUsers
 }

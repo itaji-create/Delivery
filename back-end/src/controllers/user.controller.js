@@ -29,7 +29,16 @@ const getSellers = async (req, res) => {
   } catch (error) {
     return res.status(409).json({ message: error.message })
   }
-}
+};
+
+const deleteUser = async (req, res) => {
+  try {
+    const destroyed = await loginService.deleteUser(req.body);
+    return res.status(202).json(destroyed);
+  } catch (error) {
+    return res.status(400).json({ message: error.message })
+  }
+};
 
 const getUsers = async (req, res) => {
   try {
@@ -41,8 +50,9 @@ const getUsers = async (req, res) => {
 }
 
 module.exports = {
-    signIn,
-    signUp,
-    getSellers,
-    getUsers
+  signIn,
+  signUp,
+  getSellers,
+  getUsers,
+  deleteUser,
 };
