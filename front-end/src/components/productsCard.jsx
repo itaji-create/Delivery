@@ -53,8 +53,12 @@ function Card({ product: { id, price, urlImage, name } }) {
       <div className="card">
         <img src={ urlImage } className="card-img" alt="Imagem do Produto" />
         <div className="card-body">
-          <h5 className="card-title">{name}</h5>
-          <p className="card-text">{price.replace('.', ',')}</p>
+          <h6 className="font-weight-bold">{name}</h6>
+          <div className="price bg-light">
+            <h4 className="font-weight-bold">
+              {`R$ ${price.replace('.', ',')}`}
+            </h4>
+          </div>
           <div className="row">
             <div className="col-md-4">
               <button
