@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
 
 const handleClick = () => {
   localStorage.removeItem('user');
@@ -16,7 +15,7 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders }) {
   }, [setUser]);
 
   return (
-    <nav className="navbar bg-primary">
+    <nav className="navbar border navbar-light bg-light">
       <div>
         <ul className="nav nav-pills">
           <li className="nav-item">
@@ -31,7 +30,7 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders }) {
             {products && (
               <a
                 href="/customer/products"
-                className="nav-link active"
+                className="nav-link"
                 aria-current="page"
               >
                 { products }
@@ -42,7 +41,7 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders }) {
             {(orders && (
               <a
                 href="/customer/orders"
-                className="nav-link active"
+                className="nav-link"
                 aria-current="page"
               >
                 { orders }
@@ -52,17 +51,17 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders }) {
             {(sellersOrders && (
               <a
                 href="/seller/orders"
-                className="nav-link active"
+                className="nav-link"
                 aria-current="page"
               >
                 { sellersOrders }
               </a>))}
           </li>
-          <li className="nav-item">
+          <li className="nav-item active">
             {(cart && (
               <a
                 href="/customer/checkout"
-                className="nav-link active"
+                className="nav-link"
                 aria-current="page"
               >
                 { cart }
@@ -73,15 +72,31 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders }) {
       </div>
       <ul className="nav nav-pills">
         <li>
-          <span>
+          <input
+            className="form-control"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </li>
+        <li>
+          <button className="btn btn-outline-success" type="submit">Search</button>
+        </li>
+      </ul>
+      <ul className="nav nav-pills">
+        <li className="nav-item">
+          <span className="navbar-brand">
             { user && user.name }
           </span>
-          <Button
+        </li>
+        <li className="nav-item">
+          <button
             type="button"
             onClick={ handleClick }
+            className="btn btn-light"
           >
             Sair
-          </Button>
+          </button>
         </li>
       </ul>
     </nav>
