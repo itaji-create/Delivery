@@ -7,7 +7,7 @@ const handleClick = () => {
   window.location.href = '/login';
 };
 
-function NavBar({ products, cart, orders, titlePage, sellersOrders }) {
+function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
   const [user, setUser] = useState();
 
   useEffect(() => {
@@ -70,19 +70,21 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders }) {
           </li>
         </ul>
       </div>
-      <ul className="nav nav-pills">
-        <li>
-          <input
-            className="form-control"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-        </li>
-        <li>
-          <button className="btn btn-outline-success" type="submit">Search</button>
-        </li>
-      </ul>
+      {(search && (
+        <ul className="nav nav-pills">
+          <li>
+            <input
+              className="form-control"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </li>
+          <li>
+            <button className="btn btn-outline-success" type="submit">Search</button>
+          </li>
+        </ul>
+      ))}
       <ul className="nav nav-pills">
         <li className="nav-item">
           <span className="navbar-brand">
