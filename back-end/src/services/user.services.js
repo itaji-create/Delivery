@@ -1,4 +1,4 @@
-const { User } = require('../database/models');
+const { User, Sequelize } = require('../database/models');
 const md5 = require('md5');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
@@ -6,6 +6,15 @@ const fs = require('fs');
 const getSellers = async () => {
   const sellers = await User.findAll({ where: { role: 'seller' } });
   return sellers;
+};
+
+const getUsers = async () => {
+  const users = await User.findAll({ where: {
+    role: {
+      [Sequelize.Op.not]: 'administrator'
+    }
+  } });
+  return users;
 };
 
 const signIn = async ({ email, password }) => {
@@ -44,4 +53,5 @@ module.exports = {
   signIn,
   token,
   signUp,
+  getUsers
 }
