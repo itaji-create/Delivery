@@ -50,6 +50,7 @@ function Admin() {
 
       console.log({ newUser, token });
       setInvalidProperties(false);
+      window.location.reload();
     } catch (error) {
       console.log(error);
       setInvalidProperties(true);
@@ -113,11 +114,6 @@ function Admin() {
             <option value="customer">Customer</option>
           </select>
         </label>
-        { invalidProperties ? (
-          <p>
-            revise dados e tente novamente
-          </p>
-        ) : null }
         <button
           type="button"
           className="btn btn-primary btn-block"
@@ -126,6 +122,11 @@ function Admin() {
         >
           Cadastrar
         </button>
+        { invalidProperties ? (
+          <p>
+            revise dados e tente novamente
+          </p>
+        ) : null }
       </form>
       <UsersTable users={ users } />
     </div>

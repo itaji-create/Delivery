@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 
 function UsersTable(props) {
   const { users } = props;
-  console.log(users);
   return (
     <div>
       <h2>Users:</h2>
@@ -42,10 +41,9 @@ UsersTable.propTypes = {
   users: PropTypes.arrayOf({
     id: PropTypes.number,
     name: PropTypes.string,
-    price: PropTypes.string,
-    qtd: PropTypes.number,
-    totalPrice: PropTypes.number,
+    email: PropTypes.string,
+    role: PropTypes.string,
   }).isRequired,
-  };
+};
 
 export default UsersTable;
