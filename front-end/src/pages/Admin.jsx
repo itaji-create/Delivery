@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
-import React, { useState } from 'react';
-import { requestPost } from '../utils/requests';
+import React, { useState, useEffect } from 'react';
+import { requestGet, requestPost } from '../utils/requests';
 import NavBar from '../components/navBar';
 import UsersTable from '../components/usersTable';
 
@@ -8,6 +8,7 @@ function Admin() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [users, setUsers] = useState();
   const [invalidProperties, setInvalidProperties] = useState(false);
   const [isDisable, setDisable] = useState(true);
 
@@ -54,6 +55,10 @@ function Admin() {
       setInvalidProperties(true);
     }
   };
+
+  useEffect(() => {
+    requestGet('user/getUsers').then((data) => setUsers(data));
+  }, []);
 
   return (
     <div>
@@ -122,7 +127,7 @@ function Admin() {
           Cadastrar
         </button>
       </form>
-      <UsersTable />
+      <UsersTable users={ users } />
     </div>
   );
 }

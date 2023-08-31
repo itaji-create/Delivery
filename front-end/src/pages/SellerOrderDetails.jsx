@@ -30,9 +30,11 @@ function SellerOrderDetails() {
         products={ products }
         order={ order }
         handleClick={ () => switchButton(order.status) }
-        buttonName={ order && (
-          order.status === 'Pendente' ? 'Mark as In Preparation' : 'Mark as In Transit'
-        )}
+        buttonName={
+          (order && (
+            order.status === 'Pendente' ? 'Mark as In Preparation' : 'Mark as In Transit'
+          ))
+        }
         disabled={ order && order.status === 'In Transit' }
       />
       {order && (
