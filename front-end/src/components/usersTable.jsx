@@ -1,7 +1,20 @@
 import PropTypes from 'prop-types';
+import { deleteItem } from '../utils/requests';
 
 function UsersTable(props) {
   const { users } = props;
+
+  const handleClick = async (e) => {
+    try {
+      const body = {
+        email: e.target.name,
+      };
+      await deleteItem('user', body);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  };
+
   return (
     <div>
       <h2>Users:</h2>
@@ -25,7 +38,12 @@ function UsersTable(props) {
               <th scope="col">{ user.email }</th>
               <th scope="col">{ user.role }</th>
               <th scope="col">
-                <button className="btn btn-danger" type="button">
+                <button
+                  onClick={ handleClick }
+                  className="btn btn-danger"
+                  type="button"
+                  name={ user.email }
+                >
                   X
                 </button>
               </th>
