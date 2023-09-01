@@ -35,9 +35,9 @@ export const updateSale = async (endpoint, body, token) => {
   return data;
 };
 
-export const deleteUser = async (body, token) => {
-  const { data } = await api.delete('/delete', body, {
-    headers: { Authorization: token }
+export const destroy = async (endpoint, body, token) => {
+  const { data } = await api.delete(`${endpoint}/delete`, body, {
+    headers: { Authorization: token },
   });
   return data;
 };
