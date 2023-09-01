@@ -40,7 +40,7 @@ function Register() {
       const {
         newUser,
         token,
-      } = await requestPost('/user/signUp', { name, email, password, role });
+      } = await requestPost('/user/signUp', { name, email, password });
 
       setToken(token);
       newUser.token = token;

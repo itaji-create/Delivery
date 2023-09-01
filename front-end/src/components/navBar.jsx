@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 const handleClick = () => {
   localStorage.removeItem('user');
+  localStorage.removeItem('token');
+  localStorage.removeItem('cartItens');
 
   window.location.href = '/login';
 };
