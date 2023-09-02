@@ -4,12 +4,10 @@ import { deleteItem } from '../utils/requests';
 function UsersTable(props) {
   const { users } = props;
 
-  const handleClick = async (e) => {
+  const handleClick = async (id) => {
     try {
-      const body = {
-        email: e.target.name,
-      };
-      await deleteItem('user', body);
+      await deleteItem('user', id);
+      window.location.reload();
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -39,7 +37,7 @@ function UsersTable(props) {
               <th scope="col">{ user.role }</th>
               <th scope="col">
                 <button
-                  onClick={ handleClick }
+                  onClick={ () => handleClick(user.id) }
                   className="btn btn-danger"
                   type="button"
                   name={ user.email }

@@ -33,7 +33,8 @@ const getSellers = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    const destroyed = await loginService.deleteUser(req.body);
+    const { id } = req.params;
+    const destroyed = await loginService.deleteUser(id);
     return res.status(202).json(destroyed);
   } catch (error) {
     return res.status(400).json({ message: error.message })

@@ -48,9 +48,9 @@ const signUp = async ({ name, role = 'customer', email, password }) => {
     return newUser; 
 };
 
-const deleteUser = async ({ email }) => {
+const deleteUser = async (id) => {
   const destroyed = await User.destroy({
-    where: { email }
+    where: { id }
   });
   return destroyed;
 }

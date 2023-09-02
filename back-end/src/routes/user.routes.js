@@ -9,6 +9,6 @@ router
   .get('/getUsers', getUsers)
   .post('/signIn', signInValidation, signIn)
   .post('/signUp', signUpValidation, signUp)
-  .delete('/delete', deleteUser);
+  .delete('/delete/:id', deleteUser);
 
 module.exports = router;
