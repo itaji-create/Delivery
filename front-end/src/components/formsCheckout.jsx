@@ -27,6 +27,7 @@ function Forms(props) {
       deliveryAddress: adress,
       deliveryNumber: number,
     };
+    console.log(data);
     const sale = await createSale('/sales', data, user.token);
 
     cart.forEach((e) => {
