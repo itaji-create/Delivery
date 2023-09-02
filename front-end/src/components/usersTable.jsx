@@ -4,10 +4,20 @@ import { deleteItem } from '../utils/requests';
 function UsersTable(props) {
   const { users } = props;
 
-  const handleClick = async (id) => {
+  const handleClick = async (id, name) => {
     try {
-      await deleteItem('user', id);
-      window.location.reload();
+      const confirmacao = confirm(
+        `Tem certeza de que deseja excluir o usuário ${name}?`,
+      );
+
+      if (confirmacao) {
+        await deleteItem('user', id);
+
+        alert(`Usuário ${name} foi excluído.`);
+        window.location.reload();
+      } else {
+        alert('Exclusão cancelada.');
+      }
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -37,7 +47,7 @@ function UsersTable(props) {
               <th scope="col">{ user.role }</th>
               <th scope="col">
                 <button
-                  onClick={ () => handleClick(user.id) }
+                  onClick={ () => handleClick(user.id, user.name) }
                   className="btn btn-danger"
                   type="button"
                   name={ user.email }
