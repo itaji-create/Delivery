@@ -9,6 +9,17 @@ const getProducts = async (req, res) => {
   }
 };
 
+const getPageProducts = async (req, res) => {
+  try {
+    const page = req.query.page || 1;
+    const products = await productsServices.getPageProducts(page);
+    return res.status(200).json(products);
+  } catch (error) {
+    return res.status(404).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getProducts,
+  getPageProducts
 };
