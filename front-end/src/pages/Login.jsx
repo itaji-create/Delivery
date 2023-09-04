@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 import { requestPost, setToken } from '../utils/requests';
 
 function Login() {
@@ -54,32 +53,37 @@ function Login() {
   };
 
   return (
-    <Container>
-      <main className="form-signin w-100 m-auto">
-        <form>
-          <h1 className="h3 mb-3 fw-normal">Delivery App</h1>
-          <div className="form-floating">
-            <input
-              type="email"
-              name="email"
-              className="form-control"
-              id="floatingInput"
-              onChange={ handleChange }
-            />
-            <label htmlFor="floatingInput">Endereço de E-mail</label>
+    <div style={{ backgroundColor: "black", height: "1000px" }}>
+      <header id="login-header">
+        <h1>Delivery App</h1>
+      </header>
+      <main className="login-main">
+        <form className="form-signin w-50 m-auto mt-5">
+          <h2 className="mb-3 fw-bold text-light">Login</h2>
+          <div className="input-login-box">
+            <div className="form-floating">
+              <input
+                type="email"
+                name="email"
+                className="form-control mb-2"
+                id="floatingInput"
+                onChange={ handleChange }
+              />
+              <label htmlFor="floatingInput">Endereço de E-mail</label>
+            </div>
+            <div className="form-floating">
+              <input
+                type="password"
+                name="password"
+                className="form-control"
+                id="floatingPassword"
+                placeholder="Password"
+                onChange={ handleChange }
+              />
+              <label htmlFor="floatingPassword">Password</label>
+            </div>
           </div>
-          <div className="form-floating">
-            <input
-              type="password"
-              name="password"
-              className="form-control"
-              id="floatingPassword"
-              placeholder="Password"
-              onChange={ handleChange }
-            />
-            <label htmlFor="floatingPassword">Password</label>
-          </div>
-          <div className="form-check text-start my-3">
+          <div className="my-3 text-center">
             { loginFailed ? (
               <p>
                 email ou senha incorretos, tente novamente
@@ -87,21 +91,21 @@ function Login() {
             ) : null }
             <button
               type="submit"
-              className="btn btn-primary w-100 py-2"
+              className="btn-outline-custom"
               disabled={ isDisable }
               onClick={ (event) => handleClick(event) }
             >
-              LOGIN
+              ENTRAR
             </button>
-            <p>Ainda não possui uma conta?</p>
-            <Link to="/register">
-              <button className="btn w-100 py-2" type="button">Clique aqui</button>
-            </Link>
-            <p className="mt-5 mb-3 text-body-secondary">© 2022–2023</p>
+            <div>
+              <span className="text-light"><sub>Ainda não possui uma conta?</sub></span>
+              <a href="/register" style={ { color: "#f47521" } } className="btn fw-bold" type="button">CLIQUE AQUI</a>
+            </div>
+            <p className="mt-5 text-body-secondary">© 2022–2023</p>
           </div>
         </form>
       </main>
-    </Container>
+    </div>
   );
 }
 
