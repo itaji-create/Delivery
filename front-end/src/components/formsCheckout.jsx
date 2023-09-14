@@ -39,7 +39,7 @@ function Forms(props) {
     navigate(`/customer/orders/${sale.id}`);
   };
   return (
-    <div>
+    <div id="form-checkout">
       <form className="needs-validation was-validated" noValidate>
         <div className="row g-3">
           <div className="col-sm-6">

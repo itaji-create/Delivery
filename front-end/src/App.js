@@ -11,7 +11,6 @@ import SellerOrderDetails from './pages/SellerOrderDetails';
 import SellerOrders from './pages/SellerOrders';
 import Admin from './pages/Admin';
 
-
 function App() {
   return (
     <BrowserRouter>

@@ -1,4 +1,18 @@
-.App {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  color: #fff;
+  background: #000;
+  font-weight: 400;
+  min-height: 100%;
+  font-family: Lato, Helvetica Neue, helvetica, sans-serif;
+}
+
+/* .App {
   align-items: center;
   background: #0fa36b;
   color: #464646;
@@ -36,9 +50,9 @@
   100% {
     transform: rotate(5deg);
   }
-}
+} */
 
-@keyframes clink {
+/* @keyframes clink {
 
   0% {
     transform: rotate(-10deg);
@@ -51,7 +65,7 @@
   100% {
     transform: rotate(-10deg);
   }
-}
+} */
 
 .card-img {
   max-height: 250px; /* Defina a altura desejada */

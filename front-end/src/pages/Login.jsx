@@ -53,7 +53,7 @@ function Login() {
   };
 
   return (
-    <div style={{ backgroundColor: "black", height: "1000px" }}>
+    <div>
       <header id="login-header">
         <h1>Delivery App</h1>
       </header>

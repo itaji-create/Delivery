@@ -25,7 +25,7 @@ function Checkout() {
     .reduce((prev, curr) => prev + Number(subTotal(curr.quantity, curr.price)), 0);
 
   return (
-    <section>
+    <div>
       <NavBar products="Products" orders="My orders" />
       <div className="col-md-7 col-lg-8">
         <h2>Finalizar Pedido</h2>
@@ -80,7 +80,7 @@ function Checkout() {
 
       </h3>
       <Forms total={ totalPrice } cart={ cart } />
-    </section>
+    </div>
   );
 }
 
