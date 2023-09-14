@@ -95,6 +95,7 @@ function Forms(props) {
               type="button"
               onClick={ handleSubmit }
               className="w-100 btn btn-primary btn-lg"
+              disabled={ !adress || !number }
             >
               Finalizar pedido
             </button>
