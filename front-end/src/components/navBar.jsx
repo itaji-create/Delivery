@@ -5,8 +5,6 @@ const handleClick = () => {
   localStorage.removeItem('user');
   localStorage.removeItem('token');
   localStorage.removeItem('cartItens');
-
-  window.location.href = '/login';
 };
 
 function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
@@ -17,13 +15,13 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
   }, [setUser]);
 
   return (
-    <nav className="navbar border navbar-light bg-light">
-      <div>
+    <nav className="navbar">
+      <div className="navbar-content">
         <ul className="nav nav-pills">
           <li className="nav-item">
             {titlePage && (
               <h3
-                className="navbar-brand"
+                className="navbar-name"
                 aria-current="page"
               >
                 { titlePage }
@@ -32,7 +30,7 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
             {products && (
               <a
                 href="/customer/products"
-                className="nav-link"
+                className="navbar-link"
                 aria-current="page"
               >
                 { products }
@@ -43,7 +41,7 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
             {(orders && (
               <a
                 href="/customer/orders"
-                className="nav-link"
+                className="navbar-link"
                 aria-current="page"
               >
                 { orders }
@@ -53,7 +51,7 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
             {(sellersOrders && (
               <a
                 href="/seller/orders"
-                className="nav-link"
+                className="navbar-link"
                 aria-current="page"
               >
                 { sellersOrders }
@@ -63,7 +61,7 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
             {(cart && (
               <a
                 href="/customer/checkout"
-                className="nav-link"
+                className="navbar-link"
                 aria-current="page"
               >
                 { cart }
@@ -89,18 +87,18 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
       ))}
       <ul className="nav nav-pills">
         <li className="nav-item">
-          <span className="navbar-brand">
+          <span className="navbar-name">
             { user && user.name }
           </span>
         </li>
         <li className="nav-item">
-          <button
-            type="button"
+          <a
+            href="/login"
             onClick={ handleClick }
-            className="btn btn-light"
+            className="navbar-link"
           >
             Sair
-          </button>
+          </a>
         </li>
       </ul>
     </nav>

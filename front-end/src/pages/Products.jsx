@@ -18,7 +18,7 @@ function Products() {
 
   return (
     <div>
-      <NavBar cart="Shopping Cart" orders="My orders" />
+      <NavBar cart="Shopping Cart" orders="My orders" titlePage="Delivery App" />
       <div>
         <button
           type="button"

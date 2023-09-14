@@ -5,11 +5,30 @@ html, body {
 }
 
 #root {
-  color: #fff;
+  color: #f47521;
   background: #000;
   font-weight: 400;
   min-height: 100%;
   font-family: Lato, Helvetica Neue, helvetica, sans-serif;
+}
+
+.navbar {
+  background-color: #23252b;
+  height: 60px;
+  font-size: larger;
+}
+
+.navbar-name {
+  color: #f47521;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.navbar-link {
+  color: whitesmoke;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
 }
 
 /* .App {
@@ -72,7 +91,7 @@ html, body {
 }
 
 #login-header {
-  height: 70px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;

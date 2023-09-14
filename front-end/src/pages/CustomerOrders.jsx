@@ -24,7 +24,7 @@ function CustomerOrders() {
   }, []);
 
   return (
-    <section>
+    <div>
       <header>
         <NavBar products="Products" cart="Shopping cart" />
       </header>
@@ -38,7 +38,7 @@ function CustomerOrders() {
             : <h1> Você ainda não possui pedido</h1> }
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
