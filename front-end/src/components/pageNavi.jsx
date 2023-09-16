@@ -6,23 +6,29 @@ function PageNavi({ page }) {
 
   return (
     <div>
-      <div>
+      <div className="pagenavi">
         {page === 1 || (
-          <a href={ `/customer/products/?page=${page - 1}` }>« Previous</a>
+          <a
+            className="pn-btn"
+            href={ `/customer/products/?page=${page - 1}` }>« Previous</a>
         )}
-        <a href="/customer/products/?page=1">
+        <a className="pn-btn" href="/customer/products/?page=1">
           1
         </a>
-        <a href={ `/customer/products/?page=${page > t ? page - 1 : 2}` }>
+        <a
+          className="pn-btn"
+          href={ `/customer/products/?page=${page > t ? page - 1 : 2}` }>
           {page > t ? page - 1 : 2}
         </a>
-        <a href={ `/customer/products/?page=${page > t ? page : t}` }>
+        <a className="pn-btn" href={ `/customer/products/?page=${page > t ? page : t}` }>
           {page > t ? page : t}
         </a>
-        <a href={ `/customer/products/?page=${page > t ? page + 1 : f}` }>
+        <a
+          className="pn-btn"
+          href={ `/customer/products/?page=${page > t ? page + 1 : f}` }>
           {page > t ? page + 1 : f}
         </a>
-        <a href={ `/customer/products/?page=${page + 1}` }>
+        <a className="pn-btn" href={ `/customer/products/?page=${page + 1}` }>
           Next »
         </a>
       </div>
