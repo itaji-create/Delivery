@@ -28,61 +28,67 @@ function Checkout() {
   return (
     <div>
       <NavBar products="Products" orders="My orders" />
-      <div id="checkout-content">
-        <div className="col-md-7 col-lg-8">
-          <h2>Finalizar Pedido</h2>
-        </div>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Item</th>
-              <th scope="col">Descrição</th>
-              <th scope="col">Quantidade</th>
-              <th scope="col">Valor Unitário</th>
-              <th scope="col">Sub-total</th>
-              <th scope="col">Remover Item</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cart.map((product, index) => (
-              <tr key={ product.id } id={ product.id }>
-                <th scope="row">
-                  {index + 1}
-                </th>
-                <td>
-                  {product.name}
-                </td>
-                <td>
-                  {product.quantity}
-                </td>
-                <td>
-                  {product.price.replace('.', ',')}
-                </td>
-                <td>
-                  { subTotal(product.quantity, product.price).replace('.', ',') }
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    onClick={ handleRemoveButton }
-                    id={ index }
-                    className="btn btn-danger"
-                  >
-                    Remover
-                  </button>
-                </td>
+      {cart.length > 0 ? (
+        <div id="checkout-content">
+          <div className="col-md-7 col-lg-8">
+            <h2>Finalizar Pedido</h2>
+          </div>
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Valor Unitário</th>
+                <th scope="col">Sub-total</th>
+                <th scope="col">Remover Item</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <h3>
-          {
-            `Total: R$ ${(totalPrice).toFixed(2).replace('.', ',')}`
-          }
+            </thead>
+            <tbody>
+              {cart.map((product, index) => (
+                <tr key={ product.id } id={ product.id }>
+                  <th scope="row">
+                    {index + 1}
+                  </th>
+                  <td>
+                    {product.name}
+                  </td>
+                  <td>
+                    {product.quantity}
+                  </td>
+                  <td>
+                    {product.price.replace('.', ',')}
+                  </td>
+                  <td>
+                    { subTotal(product.quantity, product.price).replace('.', ',') }
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={ handleRemoveButton }
+                      id={ index }
+                      className="btn btn-danger"
+                    >
+                      Remover
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <h3>
+            {
+              `Total: R$ ${(totalPrice).toFixed(2).replace('.', ',')}`
+            }
 
+          </h3>
+          <Forms total={ totalPrice } cart={ cart } />
+        </div>
+      ) : (
+        <h3 style={ { marginTop: '50px' } }>
+          You do not have any products in your shopping cart yet.
         </h3>
-        <Forms total={ totalPrice } cart={ cart } />
-      </div>
+      )}
     </div>
   );
 }
