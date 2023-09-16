@@ -7,22 +7,22 @@ function PageNavi({ page }) {
   return (
     <div>
       <div>
-        {page > 1 && (
-          <a href={ `/?pg=${page - 1}` }>« Previous</a>
+        {page === 1 || (
+          <a href={ `/customer/products/?page=${page - 1}` }>« Previous</a>
         )}
-        <a href="/?pg=1">
+        <a href="/customer/products/?page=1">
           1
         </a>
-        <a href={ `/?pg=${page + 1}` }>
-          {page > f ? page - 1 : 2}
+        <a href={ `/customer/products/?page=${page > t ? page - 1 : 2}` }>
+          {page > t ? page - 1 : 2}
         </a>
-        <a href={ `/?pg${page > f ? page - 1 : t}` }>
-          {page > f ? page : t}
+        <a href={ `/customer/products/?page=${page > t ? page : t}` }>
+          {page > t ? page : t}
         </a>
-        <a href={ `/?pg${page > f ? page - 1 : f}` }>
-          {page > f ? page + 1 : f}
+        <a href={ `/customer/products/?page=${page > t ? page + 1 : f}` }>
+          {page > t ? page + 1 : f}
         </a>
-        <a href={ `/?pg=${page - 2}` }>
+        <a href={ `/customer/products/?page=${page + 1}` }>
           Next »
         </a>
       </div>

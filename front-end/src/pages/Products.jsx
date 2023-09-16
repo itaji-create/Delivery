@@ -2,14 +2,18 @@ import { useState, useEffect } from 'react';
 import Card from '../components/productsCard';
 import NavBar from '../components/navBar';
 import { requestGet } from '../utils/requests';
+import PageNavi from '../components/pageNavi';
 
 function Products() {
   const [products, setProducts] = useState();
   const [page, setPage] = useState(1);
 
-  const fetchProducts = async (number) => {
-    const productsData = await requestGet(`/products?page=${number || 1}`);
+  const fetchProducts = async () => {
+    const url = window.location.href;
+    const match = url.match(/\/products(.*)/);
+    const productsData = await requestGet(`/products${match[1] || ''}`);
     setProducts(productsData);
+    setPage(Number(match[0][match[0].length - 1]) || 1);
   };
 
   useEffect(() => {
@@ -19,36 +23,13 @@ function Products() {
   return (
     <div>
       <NavBar cart="Shopping Cart" orders="My orders" titlePage="Delivery App" />
+      <PageNavi page={ page } />
       <div className="container mt-5">
         <div className="row">
           {products && products.map((product) => (
             <Card key={ product.id } product={ product } />
           ))}
         </div>
-      </div>
-      <div id="change-page">
-        <button
-          type="button"
-          className="cp-btn"
-          onClick={ () => {
-            if (page > 1) {
-              fetchProducts(page - 1);
-              setPage(page - 1);
-            }
-          } }
-        >
-          Previous
-        </button>
-        <button
-          type="button"
-          className="cp-btn"
-          onClick={ () => {
-            fetchProducts(page + 1);
-            setPage(page + 1);
-          } }
-        >
-          Next
-        </button>
       </div>
     </div>
   );
