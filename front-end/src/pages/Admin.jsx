@@ -6,6 +6,9 @@ import UsersTable from '../components/usersTable';
 
 function Admin() {
   const [users, setUsers] = useState();
+  const [token, setToken] = useState('');
+
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const handleClick = async (event, url) => {
     try {
@@ -14,7 +17,7 @@ function Admin() {
       inputFields.forEach((e) => {
         data[e.name] = e.value;
       });
-      const res = await requestPost(url, data);
+      const res = await requestPost(url, data, token);
       console.log(res);
 
       window.location.reload();
@@ -26,9 +29,9 @@ Please review the data and try again`);
   };
 
   useEffect(() => {
-    const { token } = JSON.parse(localStorage.getItem('user'));
+    setToken(user.token);
     requestGet('user/getUsers', token).then((data) => setUsers(data));
-  }, []);
+  }, [token, user.token]);
 
   return (
     <div>
@@ -117,7 +120,7 @@ Please review the data and try again`);
         <button
           type="button"
           className="btn btn-primary btn-block"
-          onClick={ (e) => handleClick(e, '/product/register') }
+          onClick={ (e) => handleClick(e, '/products/register') }
         >
           Register
         </button>

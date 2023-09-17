@@ -19,7 +19,17 @@ const getPageProducts = async (req, res) => {
   }
 };
 
+ const createProduct = async (req, res) => {
+  try {
+    const newProduct = await productsServices.createProduct(req.body);
+    return res.status(201).json(newProduct);
+  } catch (error) {
+    return res.status(409).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getProducts,
-  getPageProducts
+  getPageProducts,
+  createProduct
 };

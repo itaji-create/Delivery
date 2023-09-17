@@ -15,7 +15,16 @@ const getPageProducts = async (page) => {
   return products;
 }
 
+const createProduct = async ({ name, price, urlImage }) => {
+  const userName = await Product.findOne({ where: { name } });
+  if (userName) throw new Error('name already exists');
+
+  const newUser = await Product.create({ name, price, urlImage });
+  return newUser;
+}
+
 module.exports = {
   getProducts,
-  getPageProducts
+  getPageProducts,
+  createProduct
 };
