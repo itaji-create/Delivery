@@ -29,13 +29,12 @@ function CustomerOrders() {
         <NavBar products="Products" cart="Shopping cart" />
       </header>
       <div className="container mt-5">
-        <h2 className="text-center mb-4">Pedidos de Produtos</h2>
         <div className="row">
           { orders.length > 0
             ? orders.map((sale) => (
               <Order key={ sale.id } role={ user.role } order={ sale } />
             ))
-            : <h1> Você ainda não possui pedido</h1> }
+            : <h1>You do not have an order yet</h1> }
         </div>
       </div>
     </div>

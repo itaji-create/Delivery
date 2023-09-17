@@ -20,7 +20,7 @@ function Admin() {
       window.location.reload();
     } catch ({ response, message }) {
       console.log(response.data);
-      alert(`${message} - ${response.data}
+      alert(`${message} - ${response.data.message}
 Please review the data and try again`);
     }
   };
@@ -36,7 +36,7 @@ Please review the data and try again`);
       />
       <br />
       <form>
-        <h3 style={ { color: 'white', fontWeight: '700' } }>Register User</h3>
+        <h3 className="title">Register User</h3>
         <label htmlFor="nome">
           Name:
           <input

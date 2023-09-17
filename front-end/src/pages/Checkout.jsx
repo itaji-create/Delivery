@@ -28,10 +28,11 @@ function Checkout() {
   return (
     <div>
       <NavBar products="Products" orders="My orders" />
+      <br />
       {cart.length > 0 ? (
         <div id="checkout-content">
           <div className="col-md-7 col-lg-8">
-            <h2>Finalizar Pedido</h2>
+            <h3 className="title">Finalize Order</h3>
           </div>
           <table className="table">
             <thead>
@@ -76,7 +77,7 @@ function Checkout() {
               ))}
             </tbody>
           </table>
-          <h3>
+          <h3 className="title" style={ { textAlign: 'end' } }>
             {
               `Total: R$ ${(totalPrice).toFixed(2).replace('.', ',')}`
             }

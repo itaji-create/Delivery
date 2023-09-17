@@ -61,7 +61,7 @@ function Card(params) {
               ))}
             </tbody>
           </table>
-          <h3>
+          <h3 className="title" style={ { textAlign: 'end' } }>
             {
               `Total: R$ ${(order.totalPrice).replace('.', ',')}`
             }

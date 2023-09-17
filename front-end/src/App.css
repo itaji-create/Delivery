@@ -145,3 +145,8 @@ html, body {
 .selected {
   background-color: #23252b;
 }
+
+.title {
+  color: white;
+  font-weight: 700;
+}
