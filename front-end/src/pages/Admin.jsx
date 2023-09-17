@@ -5,55 +5,23 @@ import NavBar from '../components/navBar';
 import UsersTable from '../components/usersTable';
 
 function Admin() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [users, setUsers] = useState();
-  const [invalidProperties, setInvalidProperties] = useState(false);
-  const [isDisable, setDisable] = useState(true);
 
-  const PASSWORD_MIN_LENGTH = 6;
-  const NAME_MIN_LENGTH = 12;
-  const emailRegex = /\S+@\S+\.\S+/;
-  const emailValidate = emailRegex.test(email);
-  const validateName = name.length >= NAME_MIN_LENGTH;
-  const passwordValidate = password.length >= PASSWORD_MIN_LENGTH;
-
-  const handleChange = (e) => {
-    const inputName = e.target.name;
-    if (emailValidate && passwordValidate && validateName) {
-      setDisable(false);
-    } else {
-      setDisable(true);
-    }
-
-    if (inputName === 'email') {
-      setEmail(e.target.value);
-    }
-    if (inputName === 'password') {
-      setPassword(e.target.value);
-    }
-    if (inputName === 'name') {
-      setName(e.target.value);
-    }
-  };
-
-  const handleClick = async () => {
+  const handleClick = async (event, url) => {
     try {
-      const select = document.getElementById('role');
-      const { value } = select.options[select.selectedIndex];
-      const role = value;
-      const {
-        newUser,
-        token,
-      } = await requestPost('/user/signUp', { name, email, password, role });
+      const data = {};
+      const inputFields = event.target.parentNode.querySelectorAll('input, select');
+      inputFields.forEach((e) => {
+        data[e.name] = e.value;
+      });
+      const res = await requestPost(url, data);
+      console.log(res);
 
-      console.log({ newUser, token });
-      setInvalidProperties(false);
       window.location.reload();
-    } catch (error) {
-      console.log(error);
-      setInvalidProperties(true);
+    } catch ({ response, message }) {
+      console.log(response.data);
+      alert(`${message} - ${response.data}
+Please review the data and try again`);
     }
   };
 
@@ -66,38 +34,33 @@ function Admin() {
       <NavBar
         titlePage="Manage Users"
       />
-      <h1>Admin Page</h1>
+      <br />
       <form>
+        <h3 style={ { color: 'white', fontWeight: '700' } }>Register User</h3>
         <label htmlFor="nome">
-          Nome:
+          Name:
           <input
             type="text"
             className="form-control"
-            id="nome"
-            placeholder="Digite seu nome"
-            onChange={ handleChange }
+            placeholder="Type your name"
             name="name"
           />
         </label>
         <label htmlFor="email">
-          Email:
+          E-mail:
           <input
             type="email"
             className="form-control"
-            id="email"
-            placeholder="Digite seu email"
-            onChange={ handleChange }
+            placeholder="Ex: newUser@gmail.com"
             name="email"
           />
         </label>
         <label htmlFor="senha">
-          Senha:
+          Password:
           <input
             type="password"
             className="form-control"
-            id="senha"
-            placeholder="Digite sua senha"
-            onChange={ handleChange }
+            placeholder="At least 6 characters"
             name="password"
           />
         </label>
@@ -107,8 +70,6 @@ function Admin() {
             className="form-select"
             required
             name="role"
-            id="role"
-            defaultValue={ 1 }
           >
             <option value="seller">Seller</option>
             <option value="customer">Customer</option>
@@ -117,17 +78,50 @@ function Admin() {
         <button
           type="button"
           className="btn btn-primary btn-block"
-          disabled={ isDisable }
-          onClick={ handleClick }
+          onClick={ (e) => handleClick(e, '/user/signUp') }
         >
-          Cadastrar
+          Register
         </button>
-        { invalidProperties ? (
-          <p>
-            revise dados e tente novamente
-          </p>
-        ) : null }
       </form>
+      <br />
+      <form>
+        <h3 style={ { color: 'white', fontWeight: '700' } }>Register Product</h3>
+        <label htmlFor="nome">
+          Name:
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Product's name"
+            name="name"
+          />
+        </label>
+        <label htmlFor="email">
+          Price:
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Ex: 159.66"
+            name="price"
+          />
+        </label>
+        <label htmlFor="senha">
+          Image URL:
+          <input
+            type="text"
+            className="form-control"
+            name="urlImage"
+            placeholder="Ex: https://mlstatic.com.jpg"
+          />
+        </label>
+        <button
+          type="button"
+          className="btn btn-primary btn-block"
+          onClick={ (e) => handleClick(e, '/product/register') }
+        >
+          Register
+        </button>
+      </form>
+      <br />
       <UsersTable users={ users } />
     </div>
   );

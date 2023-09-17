@@ -14,6 +14,7 @@ function Products() {
     const match = url.match(/\/products(.*)/);
     const productsData = await requestGet(`/products${match[1] || ''}`);
     setProducts(productsData);
+    console.log(productsData);
     setPage(Number(match[0][match[0].length - 1]) || 1);
   };
 

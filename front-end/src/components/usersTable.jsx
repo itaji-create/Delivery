@@ -25,7 +25,7 @@ function UsersTable(props) {
 
   return (
     <div>
-      <h2>Users:</h2>
+      <h3 style={ { color: 'white', fontWeight: '700' } }>Users</h3>
       <table className="table">
         <thead>
           <tr>
