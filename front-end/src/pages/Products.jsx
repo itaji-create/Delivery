@@ -33,7 +33,6 @@ function Products() {
           ))}
         </div>
       </div>
-      <PageNavi page={ page } next={ products && products.length < f } />
     </div>
   );
 }
