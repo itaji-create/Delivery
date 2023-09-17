@@ -26,7 +26,8 @@ Please review the data and try again`);
   };
 
   useEffect(() => {
-    requestGet('user/getUsers').then((data) => setUsers(data));
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    requestGet('user/getUsers', token).then((data) => setUsers(data));
   }, []);
 
   return (
