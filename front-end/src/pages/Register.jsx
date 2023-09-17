@@ -37,10 +37,8 @@ function Register() {
 
   const handleClick = async () => {
     try {
-      const {
-        newUser,
-        token,
-      } = await requestPost('/user/signUp', { name, email, password });
+      const { newUser } = await requestPost('/user/signUp', { name, email, password });
+      const { token } = await requestPost('/user/token', { email, role: newUser.role });
 
       setToken(token);
       newUser.token = token;

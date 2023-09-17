@@ -3,24 +3,30 @@ const loginService = require('../services/user.services');
 const signIn = async (req, res) => {
   try {
     const user = await loginService.signIn(req.body);
-    const token = await loginService.token(req.body);
 
-    return res.status(200).json({ user, token });
+    return res.status(200).json({ user });
   } catch (error) {
     return res.status(404).json({ message: error.message });
   }
 };
 
 const signUp = async (req, res) => {
-    try {
-      const token = await loginService.token(req.body);
-      const newUser = await loginService.signUp(req.body);
-
-      return res.status(201).json({ newUser, token });
-    } catch (error) {
-      return res.status(409).json({ message: error.message });
-    }
+  try {
+    const newUser = await loginService.signUp(req.body);
+    return res.status(201).json({ newUser });
+  } catch (error) {
+    return res.status(409).json({ message: error.message });
+  }
 };
+
+const getToken = async (req, res) => {
+  try {
+    const token = await loginService.token(req.body);
+    return res.status(200).json({ token });
+  } catch (error) {
+    return res.status(409).json({ message: error.message });
+  }
+}
 
 const getSellers = async (req, res) => {
   try {
@@ -56,4 +62,5 @@ module.exports = {
   getSellers,
   getUsers,
   deleteUser,
+  getToken
 };

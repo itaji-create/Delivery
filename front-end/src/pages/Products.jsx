@@ -12,7 +12,9 @@ function Products() {
   const fetchProducts = async () => {
     const url = window.location.href;
     const match = url.match(/\/products(.*)/);
-    const productsData = await requestGet(`/products${match[1] || ''}`);
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    console.log(token);
+    const productsData = await requestGet(`/products${match[1] || ''}`, token);
     setProducts(productsData);
     console.log(productsData);
     setPage(Number(match[0][match[0].length - 1]) || 1);

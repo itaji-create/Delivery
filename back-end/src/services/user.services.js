@@ -28,13 +28,14 @@ const signIn = async ({ email, password }) => {
     return user;
 };
 
-const token = async ({ email, password }) => {
+const token = async ({ email, role }) => {
     const jwtConfig = {
       algorithm: 'HS256',
+      expiresIn: '1h',
     };
   
     const secret = fs.readFileSync('jwt.evaluation.key').toString();
-    return jwt.sign({ data: { email, password } }, secret, jwtConfig);
+    return jwt.sign({ email, role }, secret, jwtConfig);
 };
 
 const signUp = async ({ name, role = 'customer', email, password }) => {

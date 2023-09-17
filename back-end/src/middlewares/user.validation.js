@@ -1,3 +1,5 @@
+const tokenAuthenticador = require("../utils/tokenAuthenticador");
+
 const signInValidation = (req, res, next) => {
     const { email, password } = req.body;
     const emailRegex = /\S+@\S+\.\S+/;
@@ -15,7 +17,20 @@ const signUpValidation = (req, res, next) => {
     next();
 };
 
+const checkAccessAdmin = (req, res, next) => {
+  const token = req.headers.authorization;
+
+  const payload = tokenAuthenticador(token);
+
+  if (payload && payload.role === 'administrator') {
+    next();
+  } else {
+    return res.status(403).json(payload);
+  }
+}
+
 module.exports = {
     signInValidation,
-    signUpValidation
+    signUpValidation,
+    checkAccessAdmin
 };

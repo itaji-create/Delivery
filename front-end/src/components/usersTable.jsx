@@ -6,12 +6,13 @@ function UsersTable(props) {
 
   const handleClick = async (id, name) => {
     try {
+      const { token } = JSON.parse(localStorage.getItem('user'));
       const confirmacao = confirm(
         `Tem certeza de que deseja excluir o usuário ${name}?`,
       );
 
       if (confirmacao) {
-        await deleteItem('user', id);
+        await deleteItem('user', id, token);
 
         alert(`Usuário ${name} foi excluído.`);
         window.location.reload();
@@ -19,7 +20,7 @@ function UsersTable(props) {
         alert('Exclusão cancelada.');
       }
     } catch (error) {
-      console.log(error.response.data.message);
+      console.log(error);
     }
   };
 

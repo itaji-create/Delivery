@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { requestPost, setToken } from '../utils/requests';
+import { requestPost } from '../utils/requests';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -30,8 +29,9 @@ function Login() {
   const handleClick = async (event) => {
     event.preventDefault();
     try {
-      const { user, token } = await requestPost('/user/signIn', { email, password });
-      setToken(token);
+      const { user } = await requestPost('/user/signIn', { email, password });
+      console.log(user);
+      const { token } = await requestPost('/user/token', { email, role: user.role });
       user.token = token;
 
       localStorage.setItem('user', JSON.stringify(user));
@@ -48,6 +48,7 @@ function Login() {
 
       window.location.href = '/customer/products';
     } catch (error) {
+      console.log(error);
       setLoginFailed(true);
     }
   };
@@ -98,8 +99,15 @@ function Login() {
               ENTRAR
             </button>
             <div>
-              <span className="text-light"><sub>Ainda não possui uma conta?</sub></span>
-              <a href="/register" style={ { color: "#f47521" } } className="btn fw-bold" type="button">CLIQUE AQUI</a>
+              <sub className="text-light">Ainda não possui uma conta?</sub>
+              <a
+                href="/register"
+                style={ { color: '#f47521' } }
+                className="btn fw-bold"
+                type="button"
+              >
+                CLIQUE AQUI
+              </a>
             </div>
             <p className="mt-5 text-body-secondary">© 2022–2023</p>
           </div>
