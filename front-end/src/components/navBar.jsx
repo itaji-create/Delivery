@@ -7,7 +7,7 @@ const handleClick = () => {
   localStorage.removeItem('cartItens');
 };
 
-function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
+function NavBar({ cart, orders, sellersOrders, search }) {
   const [user, setUser] = useState();
 
   useEffect(() => {
@@ -19,23 +19,13 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
       <div className="navbar-content">
         <ul className="nav nav-pills">
           <li className="nav-item">
-            {titlePage && (
-              <h3
-                className="navbar-name"
-                aria-current="page"
-              >
-                { titlePage }
-              </h3>
-            )}
-            {products && (
-              <a
-                href="/customer/products"
-                className="navbar-link"
-                aria-current="page"
-              >
-                { products }
-              </a>
-            )}
+            <a
+              href="/customer/products"
+              className="h1 navbar-name"
+              aria-current="page"
+            >
+              Delivery App
+            </a>
           </li>
           <li className="nav-item">
             {(orders && (
@@ -106,7 +96,10 @@ function NavBar({ products, cart, orders, titlePage, sellersOrders, search }) {
 }
 
 NavBar.propTypes = {
-  products: PropTypes.str,
+  orders: PropTypes.str,
+  cart: PropTypes.str,
+  sellersOrders: PropTypes.str,
+  search: PropTypes.boll,
 }.isRequired;
 
 export default NavBar;
