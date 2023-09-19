@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-max-depth */
 import React, { useState } from 'react';
 import { requestPost, setToken } from '../utils/requests';
 
@@ -6,6 +5,7 @@ function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirm, setConfirm] = useState('');
   const [invalidProperties, setInvalidProperties] = useState(false);
   const [isDisable, setDisable] = useState(true);
 
@@ -36,6 +36,10 @@ function Register() {
   };
 
   const handleClick = async () => {
+    if (password !== confirm) {
+      setInvalidProperties(true);
+      return
+    }
     try {
       const { newUser } = await requestPost('/user/signUp', { name, email, password });
       const { token } = await requestPost('/user/token', { email, role: newUser.role });
@@ -58,65 +62,66 @@ function Register() {
       <header id="login-header">
         <h1>Delivery App</h1>
       </header>
-      <div>
-        <form className="form-signin w-50 m-auto mt-5">
-        <h2 className="mb-3 fw-bold text-light">Register User</h2>
-          <div  className="input-login-box">
-            <div>
+      <main>
+        <form className="form-signin w-50 p-3 m-auto mt-5">
+          <h2 className="mb-3 fw-bold text-light">Register User</h2>
+          <div className="input-login-box">
+            <div className="form-floating">
+              <input
+                type="text"
+                className="form-control mb-2"
+                id="name"
+                placeholder="Type your name"
+                onChange={ handleChange }
+                name="name"
+              />
               <label htmlFor="name">
                 Name:
-                <input
-                  type="text"
-                  className="form-control mb-2"
-                  id="name"
-                  placeholder="Type your name"
-                  onChange={ handleChange }
-                  name="name"
-                />
               </label>
             </div>
-            <div className="form-group">
+            <div className="form-floating">
+              <input
+                type="email"
+                className="form-control mb-2"
+                id="email"
+                placeholder="Type you E-mail"
+                onChange={ handleChange }
+                name="email"
+              />
               <label htmlFor="email">
                 E-mail:
-                <input
-                  type="email"
-                  className="form-control mb-2"
-                  id="email"
-                  placeholder="Type you E-mail"
-                  onChange={ handleChange }
-                  name="email"
-                />
               </label>
             </div>
-            <div className="form-group">
+            <div className="form-floating">
+              <input
+                type="password"
+                className="form-control mb-2"
+                id="senha"
+                placeholder="Type you password"
+                onChange={ handleChange }
+                name="password"
+              />
               <label htmlFor="senha">
                 Password:
-                <input
-                  type="password"
-                  className="form-control mb-2"
-                  id="senha"
-                  placeholder="Type you password"
-                  onChange={ handleChange }
-                  name="password"
-                />
               </label>
             </div>
-          </div>
-          {/* <div className="form-group">
-            <label htmlFor="confirmarSenha">
-              Confirmar Senha:
+            <div className="form-floating">
               <input
                 type="password"
                 className="form-control"
                 id="confirmarSenha"
+                onChange={ (e) => setConfirm(e.target.value)}
                 placeholder="Confirme sua senha"
               />
-            </label>
-          </div> */}
+              <label htmlFor="confirmarSenha">
+                Confirm your password:
+              </label>
+            </div>
+          </div>
           <div className="my-3 text-center">
             { invalidProperties ? (
               <p>
-                revise dados e tente novamente
+                Review your data and try again!
               </p>
             ) : null }
             <button
@@ -129,7 +134,7 @@ function Register() {
             </button>
           </div>
         </form>
-      </div>
+      </main>
     </div>
   );
 }
