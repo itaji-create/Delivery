@@ -54,19 +54,22 @@ function Register() {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <h2 className="text-center mb-4">Cadastro de Usuário</h2>
-          <form>
-            <div className="form-group">
-              <label htmlFor="nome">
-                Nome:
+    <div>
+      <header id="login-header">
+        <h1>Delivery App</h1>
+      </header>
+      <div>
+        <form className="form-signin w-50 m-auto mt-5">
+        <h2 className="mb-3 fw-bold text-light">Register User</h2>
+          <div  className="input-login-box">
+            <div>
+              <label htmlFor="name">
+                Name:
                 <input
                   type="text"
-                  className="form-control"
-                  id="nome"
-                  placeholder="Digite seu nome"
+                  className="form-control mb-2"
+                  id="name"
+                  placeholder="Type your name"
                   onChange={ handleChange }
                   name="name"
                 />
@@ -74,12 +77,12 @@ function Register() {
             </div>
             <div className="form-group">
               <label htmlFor="email">
-                Email:
+                E-mail:
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control mb-2"
                   id="email"
-                  placeholder="Digite seu email"
+                  placeholder="Type you E-mail"
                   onChange={ handleChange }
                   name="email"
                 />
@@ -87,28 +90,30 @@ function Register() {
             </div>
             <div className="form-group">
               <label htmlFor="senha">
-                Senha:
+                Password:
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control mb-2"
                   id="senha"
-                  placeholder="Digite sua senha"
+                  placeholder="Type you password"
                   onChange={ handleChange }
                   name="password"
                 />
               </label>
             </div>
-            {/* <div className="form-group">
-              <label htmlFor="confirmarSenha">
-                Confirmar Senha:
-                <input
-                  type="password"
-                  className="form-control"
-                  id="confirmarSenha"
-                  placeholder="Confirme sua senha"
-                />
-              </label>
-            </div> */}
+          </div>
+          {/* <div className="form-group">
+            <label htmlFor="confirmarSenha">
+              Confirmar Senha:
+              <input
+                type="password"
+                className="form-control"
+                id="confirmarSenha"
+                placeholder="Confirme sua senha"
+              />
+            </label>
+          </div> */}
+          <div className="my-3 text-center">
             { invalidProperties ? (
               <p>
                 revise dados e tente novamente
@@ -116,14 +121,14 @@ function Register() {
             ) : null }
             <button
               type="button"
-              className="btn btn-primary btn-block"
+              className="btn-outline-custom btn-block"
               disabled={ isDisable }
               onClick={ handleClick }
             >
-              Cadastrar
+              Register
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );
