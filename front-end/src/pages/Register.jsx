@@ -132,6 +132,7 @@ function Register() {
             >
               Register
             </button>
+            <p className="mt-5 text-body-secondary">© 2022–2023</p>
           </div>
         </form>
       </main>
